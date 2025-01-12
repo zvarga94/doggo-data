@@ -4,11 +4,19 @@ repos:
     hooks:
       - id: black
         name: black
-        args: ["--line-length=88"]
+        args: [ "--line-length=88" ]
+        exclude: |
+          (?x)^(
+            venv/
+          )/
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
     rev: v0.9.1
     hooks:
       - id: ruff
         name: ruff
-        args: ["--fix"]
+        args: [ "--fix" ]
+        exclude: |
+          (?x)^(
+            venv/
+          )/

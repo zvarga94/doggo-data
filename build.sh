@@ -15,17 +15,15 @@ if ! command -v poetry &>/dev/null; then
 fi
 
 VENV_DIR="venv"
-if [ ! -d "$VENV_DIR" ]; then
-    echo "Creating virtual environment..."
-    python3 -m venv "$VENV_DIR"
-else
-    echo "Virtual environment already exists."
-fi
+rm -rf "$VENV_DIR"
+echo "Creating virtual environment..."
+python3 -m venv "$VENV_DIR"
 
 echo "Activating virtual environment..."
 source "$VENV_DIR/bin/activate"
 
 echo "Installing dependencies..."
 poetry install
+pre-commit install
 
 echo "Project setup complete!"

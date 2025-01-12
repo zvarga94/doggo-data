@@ -1,12 +1,10 @@
-[project]
+[tool.poetry]
+package-mode = false
 name = "doggo-data"
-version = "0.1.0"
 description = "A Python project for analyzing dog shelter data and adoption trends."
 readme = "README.md"
-license = { text = "MIT" }
-authors = [
-    { name = "Zsolt Varga", email = "zsoltvarga94@gmail.com" }
-]
+license = "MIT"
+authors = ["Zsolt Varga zsoltvarga94@gmail.com"]
 keywords = ["dog", "data-analysis", "web-scraping"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -16,20 +14,18 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Topic :: Scientific/Engineering :: Information Analysis"
 ]
-requires-python = ">=3.9"
 
-dependencies = [
-    "requests== 2.32.3",
-    "beautifulsoup4==4.12.3",
-    "pandas==2.2.3",
-]
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "2.32.3"
+beautifulsoup4 = "4.12.3"
+pandas = "2.2.3"
 
-[project.optional-dependencies]
-dev = [
-    "pytest==8.3.4",
-    "black==24.10.0",
-    "ruff==0.9.1"
-]
+[tool.poetry.dev-dependencies]
+pre-commit = "4.0.1"
+pytest = "8.3.4"
+black = "24.10.0"
+ruff = "0.9.1"
 
 [build-system]
 requires = ["setuptools", "wheel"]
@@ -37,7 +33,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.black]
 line-length = 88
-include = '\.pyi?$'  # Include .py and .pyi files
+include = '\.pyi?$'
 exclude = '''
 /(
     \.git
@@ -49,5 +45,15 @@ exclude = '''
   | buck-out
   | build
   | dist
+  | venv
 )/
 '''
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F"]
+ignore = ["E501"]
+exclude = [
+    "venv/",
+]
+fix = true
