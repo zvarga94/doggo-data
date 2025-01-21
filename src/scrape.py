@@ -46,6 +46,7 @@ def download_images(
                                 file.write(response.content)
 
                             logger.info(f"Downloaded: {src}")
+                            time.sleep(1)
                             downloaded_urls.add(src)
                         else:
                             logger.warning(
@@ -205,7 +206,6 @@ def scrape_pages(
                 except Exception as e:
                     logger.warning(f"Failed to scrape {link}: {e}")
                 finally:
-                    # Polite delay or optional explicit wait
                     time.sleep(3)
         except Exception as e:
             logger.warning(f"Failed to load archive page {url}: {e}")
@@ -219,8 +219,8 @@ def main():
     (archived) and save results to JSON.
     """
     options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
+    # options.add_argument("--headless")
+    # options.add_argument("--disable-gpu")
 
     driver = webdriver.Chrome(options=options)
     session = requests.Session()
