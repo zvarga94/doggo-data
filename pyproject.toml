@@ -16,16 +16,18 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-requests = "2.32.3"
 beautifulsoup4 = "4.12.3"
 pandas = "2.2.3"
+python = "^3.9"
+requests = "2.32.3"
+selenium = "4.27.1"
 
 [tool.poetry.dev-dependencies]
+black = "24.10.0"
 pre-commit = "4.0.1"
 pytest = "8.3.4"
-black = "24.10.0"
 ruff = "0.9.1"
+
 
 [build-system]
 requires = ["setuptools", "wheel"]
